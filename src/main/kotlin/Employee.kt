@@ -1,6 +1,6 @@
 import java.time.LocalDateTime
 
-open class Employee(firstName : String, lastName : String, birthYear : Int, var employer : Employer) :
+open class Employee(firstName: String, lastName: String, birthYear: Int, var employer: Employer) :
     Person(firstName, lastName, birthYear)
 {
     override fun toString(): String {
