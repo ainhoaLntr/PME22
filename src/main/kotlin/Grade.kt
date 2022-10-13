@@ -3,3 +3,4 @@ enum class Grade(val prime : Int) {
     B(200),
     C(100)
 }
+

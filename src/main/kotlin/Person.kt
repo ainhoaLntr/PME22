@@ -4,3 +4,4 @@ abstract class Person (var firstName: String, var lastName: String, val birthYea
         return "$firstName $lastName, né(e) en $birthYear"
     }
 }
+

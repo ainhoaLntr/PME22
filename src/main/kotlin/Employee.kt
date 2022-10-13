@@ -9,3 +9,5 @@ open class Employee(firstName : String, lastName : String, birthYear : Int, var 
 
     var salary = (LocalDateTime.now().year - birthYear) * 100.0
 }
+
+

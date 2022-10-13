@@ -1,7 +1,8 @@
 import java.time.LocalDateTime
 import java.util.Scanner
+import kotlin.system.exitProcess
 
-
+// création d'une entreprise
 fun createCompany(reader : Scanner): Employer {
     println("Création de votre entreprise")
     println("Raison sociale : ")
@@ -13,6 +14,7 @@ fun createCompany(reader : Scanner): Employer {
     return entreprise
 }
 
+// sélection d'un item du menu
 fun menu(reader: Scanner, company: Employer) {
     println("--------------------------------------------")
     println("[ 1 ] Consulter ou modifier votre entreprise")
@@ -59,6 +61,9 @@ fun menu(reader: Scanner, company: Employer) {
             gradeExecutive(company)
             menu(reader, company)
         }
+        "9" -> {
+            exitProcess(0);
+        }
         else -> {
             println("Veuillez saisir une valeur valide")
             menu(reader, company)
@@ -66,6 +71,7 @@ fun menu(reader: Scanner, company: Employer) {
     }
 }
 
+// consultation ou modification des informations de l'entreprise
 fun infosCompany(reader : Scanner, company : Employer) {
     println("Souhaitez-vous [ 1 ] consulter ou [ 2 ] modifier des informations de votre entreprise ?")
     when(readLine()!!) {
@@ -92,6 +98,7 @@ fun infosCompany(reader : Scanner, company : Employer) {
     }
 }
 
+// recrutement d'un employé
 fun hireEmployee(reader : Scanner, company : Employer) {
     println("Recrutement de l'employé")
     println("Prénom : ")
@@ -110,6 +117,10 @@ fun hireEmployee(reader : Scanner, company : Employer) {
     }
 }
 
+// recrutement d'un cadre
+// 2 possibilités
+//      - un employé devient cadre
+//      - l'entreprise recrute une nouvelle personne
 fun hireExecutive(reader : Scanner, company : Employer) {
     println("Recrutement du cadre")
     println("Souhaitez-vous [ 1 ] promouvoir un employé ou [ 2 ] recruter une nouvelle personne ?")
@@ -149,6 +160,11 @@ fun hireExecutive(reader : Scanner, company : Employer) {
     }
 }
 
+
+// consultation des informations liées aux employés
+//      - la liste des employés
+//      - la liste des cadres
+//      - la liste des salaires des différents employés
 fun infosEmployees(company : Employer) {
     println("Souhaitez-vous consulter la liste [ 1 ] des employés, [ 2 ] des cadres ou [ 3 ] des salaires ?")
     when(readLine()!!) {
@@ -164,6 +180,7 @@ fun infosEmployees(company : Employer) {
     }
 }
 
+// augmentation d'un employé
 fun amountEmployee(reader : Scanner, company : Employer) {
     println("Augmentation d'un employé")
     println("Prénom : ")
@@ -179,6 +196,7 @@ fun amountEmployee(reader : Scanner, company : Employer) {
     }
 }
 
+// renvoi d'un employé
 fun fireEmployee(company: Employer) {
     println("Renvoi d'une personne")
     println("Prénom : ")
@@ -192,6 +210,7 @@ fun fireEmployee(company: Employer) {
     }
 }
 
+// modification des informations d'un employé spécifique
 fun infosEmployee(reader : Scanner, company : Employer) {
     println("Les informations de quel employé souhaitez-vous modifier ?")
     println("Prénom : ")
@@ -202,12 +221,14 @@ fun infosEmployee(reader : Scanner, company : Employer) {
         if (employee.firstName == firstname && employee.lastName == lastname) {
             println("Souhaitez-vous modifier [ 1 ] le prénom ou [ 2 ] le nom de votre employé ?")
             when(readLine()!!) {
+                // modification du prénom de l'employé (elle s'appelait Clitorine, on peut la comprendre)
                 "1" -> {
                     println("Prénom : ")
                     val firstname = readLine()!!
                     employee.firstName = firstname
                     println(employee)
                 }
+                // modification du nom de l'employé (vive les mariés !)
                 "2" -> {
                     println("Nom : ")
                     val lastname = readLine()!!
@@ -219,6 +240,7 @@ fun infosEmployee(reader : Scanner, company : Employer) {
     }
 }
 
+// changement du grade d'un cadre
 fun gradeExecutive(company: Employer) {
     println("Promotion d'un cadre")
     println("Prénom : ")
